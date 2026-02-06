@@ -20,7 +20,7 @@ export function LoginPage({ onLogin }: LoginPageProps) {
 
         // Simulate network delay for better UX
         setTimeout(() => {
-            if (username === 'admin' && password === 'Isp2025') {
+            if (username === 'admin' && password === 'Isp2025.,') {
                 onLogin();
             } else {
                 setError('Credenciales inválidas. Intente nuevamente.');
