@@ -6,13 +6,14 @@ import { HistoryModal } from './components/inventory/HistoryModal';
 import { LoginPage } from './components/auth/LoginPage';
 import { DataManager } from './components/admin/DataManager';
 import { SupportChat } from './components/support/SupportChat';
+import { ExampleTable } from './components/example/ExampleTable';
 import { items as initialItems, empleados as initialEmpleados, historial as initialHistorial } from './data/mock';
 import { Item, Empleado } from './types';
 import { Monitor, Laptop, Smartphone, HardDrive, Menu } from 'lucide-react';
 
 function App() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [currentView, setCurrentView] = useState<'dashboard' | 'inventory' | 'management'>('dashboard');
+    const [currentView, setCurrentView] = useState<'dashboard' | 'inventory' | 'management' | 'example'>('dashboard');
 
     // App State
     const [items, setItems] = useState<Item[]>(initialItems);
@@ -101,12 +102,14 @@ function App() {
                     <h1 className="text-3xl font-bold text-white tracking-tight">
                         {currentView === 'dashboard' ? 'Resumen General' :
                             currentView === 'inventory' ? 'Inventario de Activos' :
-                                'Gestión de Datos'}
+                                currentView === 'management' ? 'Gestión de Datos' :
+                                    'Ejemplo'}
                     </h1>
                     <p className="text-[#9E9E9E] mt-2">
                         {currentView === 'dashboard' ? 'Vista general del estado de los equipos TI.' :
                             currentView === 'inventory' ? 'Gestión y control de asignaciones.' :
-                                'Administración de activos y empleados.'}
+                                currentView === 'management' ? 'Administración de activos y empleados.' :
+                                    'Página de ejemplo solicitada.'}
                     </p>
                 </header>
 
@@ -182,6 +185,12 @@ function App() {
                         onAddEmployee={handleAddEmployee}
                         onAssignItem={handleAssignItem}
                     />
+                )}
+
+                {currentView === 'example' && (
+                    <div className="animate-in fade-in duration-500">
+                        <ExampleTable />
+                    </div>
                 )}
             </main>
 

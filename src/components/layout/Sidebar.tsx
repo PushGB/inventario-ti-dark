@@ -3,8 +3,8 @@ import { LayoutDashboard, Package, Settings, LogOut, Box } from 'lucide-react';
 import { cn } from '../../lib/utils';
 
 interface SidebarProps {
-    currentView: 'dashboard' | 'inventory' | 'management';
-    onViewChange: (view: 'dashboard' | 'inventory' | 'management') => void;
+    currentView: 'dashboard' | 'inventory' | 'management' | 'example';
+    onViewChange: (view: 'dashboard' | 'inventory' | 'management' | 'example') => void;
     onLogout: () => void;
 }
 
@@ -13,6 +13,7 @@ export function Sidebar({ currentView, onViewChange, onLogout }: SidebarProps) {
         { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
         { id: 'inventory', label: 'Inventario', icon: Package },
         { id: 'management', label: 'Gestión', icon: Settings },
+        { id: 'example', label: 'Ejemplo', icon: Settings },
     ] as const;
 
     return (
